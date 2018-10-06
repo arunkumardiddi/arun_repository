@@ -12,7 +12,7 @@
       name: httpd
       state: present
     when: ansible_os_family =="Redhat"
-  - name: start the webserver
+  - name: start the webserver on Redhat
     service:
       name: httpd
       state: started
