@@ -1,2 +1,23 @@
 ---
 # tasks file for tom7install
+- name: install tomcat7
+  yum:
+   name: tomcat
+   state: present
+- name: copy Tomcat configuration file
+  template:
+    src: templates/tomcatconfig.j2
+    dest: /usr/share/tomcat/conf/tomcat.conf
+  notify: tomstart
+- name: install admin packages
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - tomcat-webapps
+    - tomcat-admin-webapps
+- name: tomcat documentation
+  template:
+    src: templates/tomuser.j2
+    dest: /usr/share/tomcat/conf/tomcat-users.xml
+  notify: restart
