@@ -20,4 +20,4 @@
   template:
     src: templates/tomuser.j2
     dest: /usr/share/tomcat/conf/tomcat-users.xml
-  notify: restart
+  notify: tomrestart
