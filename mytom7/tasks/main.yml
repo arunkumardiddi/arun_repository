@@ -6,7 +6,7 @@
    state: present
 - name: copy the tomcat config file into all nodes
   template:
-   src: templates/tomconfig.j2
+   src: template/tomconfig.j2
    dest: /usr/share/tomcat/conf/tomcat.conf
   notify: tomstart
 - name: install admin packages
@@ -18,6 +18,6 @@
     -tomcat-admin-webapps
 - name: copy the tomcat user.xml file into all nodes
   template:
-   src: templates/tomuser.j2
+   src: template/tomuser.j2
    dest: /usr/share/tomcat/conf/tomcat.user.xml
   notify: tomrestart
